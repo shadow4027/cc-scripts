@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Pando-five9-number-search
 // @namespace    alder_util
-// @version      0.2
+// @version      1.0
 // @description  Grabes the phone number from the five9 script and then searches it. 
 // @author       Jeremy Bloom
 // @updateURL    https://github.com/shadow4027/cc-scripts/blob/main/user_scripts/pando_search_five9_number_search.js?raw=true   
@@ -20,7 +20,7 @@
     //       el.setAttribute(key, attrs[key]);
     //     }
     //   }
-    var pando_test_function = function (stringly) {
+    window.pando_test_function = function (stringly) {
         return GM_setValue(stringly, false);
     }
     GM_addValueChangeListener("Five9PhoneNumber", function(name, old_value, new_value, remote) {
