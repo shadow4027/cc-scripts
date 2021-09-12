@@ -8,35 +8,33 @@
 // @homepageURL  https://github.com/shadow4027
 // @match        https://alder.pandolink.com/customer/search
 // @icon         https://www.google.com/s2/favicons?domain=alder.pando.com
-// @grant GM_addValueChangeListener
-// @grant GM-setValue
+// @grant GM.addValueChangeListener
+// @grant GM.setValue
 // ==/UserScript==
 
 (function() {
     'use strict';
 
-    // function setAttributes(el, attrs) {
-    //     for(var key in attrs) {
-    //       el.setAttribute(key, attrs[key]);
-    //     }
-    //   }
-    unsafeWindow.pando_test_function = function (stringly) {
-        return GM_setValue(stringly, false);
-    }
-    GM_addValueChangeListener("Five9PhoneNumber", function(name, old_value, new_value, remote) {
-        // button nonsense. Don't worry about a thing. 
-        // if (document.querySelector("#five9-number-search")) {
-        //     console.log("button exists");
-        // }
-        // else{
-        //     let search_button_container = document.querySelector("#search-customer-button").parentElement;
-        //     let five0_search_button = document.createElement("button");
-        //     setAttributes(five0_search_button, {"id": "five9-number-search", "class": "btn btn-primary advanced-search-buttons"});
-        //     five0_search_button.innerText = "Phone number search";
-        //     search_button_container.appendChild(five0_search_button);
-        // }
+    function setAttributes(el, attrs) {
+        for(var key in attrs) {
+          el.setAttribute(key, attrs[key]);
+        }
+      }
+
+      if (document.querySelector("#five9-number-search")) {
+          console.log("button exists");
+      }
+      else{
+          let search_button_container = document.querySelector("#search-customer-button").parentElement.parentElement;
+          let five0_search_button = document.createElement("button");
+          setAttributes(five0_search_button, {"id": "five9-number-search", "class": "btn btn-primary advanced-search-buttons"});
+          five0_search_button.innerText = "Phone number search";
+          search_button_container.appendChild(five0_search_button);
+      }
+      
+    GM.addValueChangeListener("Five9PhoneNumber", function(name, old_value, new_value, remote) {
+
         document.querySelector("#PhoneNumber").value = new_value;
 
     });
-    
 })();
